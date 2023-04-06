@@ -94,7 +94,7 @@ function clearGrid(e){
 function changeColorToWhite(e){
     if(eraserClicked==false){
         eraserClicked=true;
-        e.target.setAttribute('style','background:red');
+        e.target.setAttribute('style','background:rgb(150, 244, 170)');
     }
     else{
         eraserClicked=false;
@@ -105,7 +105,7 @@ function changeColorToWhite(e){
 function changeColorToRainbow(e){
     if(rainbowClicked==false){
         rainbowClicked=true;
-        e.target.setAttribute('style','background:red');
+        e.target.setAttribute('style','background:rgb(150, 244, 170)');
     }
     else{
         rainbowClicked=false;
