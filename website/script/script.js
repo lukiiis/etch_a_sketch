@@ -7,16 +7,21 @@ const colorPicker=document.querySelector("#colorPicker");
 //event listener watching for color change in color picker
 colorPicker.addEventListener("input", updateColor, false);
 let penColor=colorPicker.value;
+//indicates if the corresponding buttons were pressed
 let rainbowClicked=false;
 let eraserClicked=false;
 
 //initial grid
-for(let i=0;i<slider.value*slider.value;i++){
-    let div = document.createElement("div");
-    div.classList.add("grid-child");
-    container.appendChild(div);
-    div.addEventListener('mouseover', changeColor);
+function initiateGrid(sliderValue){
+    for(let i=0;i<Math.pow(sliderValue,2);i++){
+        let div = document.createElement("div");
+        div.classList.add("grid-child");
+        container.appendChild(div);
+        div.addEventListener('mouseover', changeColor);
+    }
 }
+
+initiateGrid(slider.value);
 
 //clean
 const clean=document.querySelector("#clean");
@@ -28,21 +33,15 @@ eraser.addEventListener('click', changeColorToWhite, false);
 
 //rainbow
 const rainbow = document.querySelector("#rainbow");
-rainbow.addEventListener('click', e => {
-    if(rainbowClicked==false){
-        e.target.setAttribute('style','background:red');
-        rainbowClicked=true;
-    }
-    else{
-        rainbowClicked=false;
-        e.target.removeAttribute('style');
-    }
-}, false);
+rainbow.addEventListener('click', changeColorToRainbow, false);
 
 //change size of grid
 slider.oninput = function() {
+    //deletes previous childs
     container.textContent="";
+    //child containers dimensions
     let childDimensions = sliderContainerDimensions/slider.value;
+   
     for(let i=0;i<slider.value*slider.value;i++){
         let div = document.createElement("div");
         div.classList.add("grid-child");
@@ -64,6 +63,7 @@ function updateColor(e){
     penColor=e.target.value;
 }
 
+//main event handler 
 function changeColor(e) {
     if (!mouseDown && e.type!="click") return;
 
@@ -71,7 +71,12 @@ function changeColor(e) {
     if(rainbowClicked==true){
         e.target.style.background=`#${Math.floor(Math.random() * 16777215).toString(16)}`;
     }
-    else{ //or stay same
+    //change to eraser
+    else if(eraserClicked==true){
+        e.target.style.background="#FFFFFF";
+    }
+    //or stay same
+    else{
         e.target.style.background=penColor;
     }
 }
@@ -89,9 +94,21 @@ function clearGrid(e){
 function changeColorToWhite(e){
     if(eraserClicked==false){
         eraserClicked=true;
-        penColor="#FFFFFF";
+        e.target.setAttribute('style','background:red');
     }
     else{
-        penColor=colorPicker.value;
+        eraserClicked=false;
+        e.target.removeAttribute('style');
+    }
+}
+
+function changeColorToRainbow(e){
+    if(rainbowClicked==false){
+        rainbowClicked=true;
+        e.target.setAttribute('style','background:red');
+    }
+    else{
+        rainbowClicked=false;
+        e.target.removeAttribute('style');
     }
 }

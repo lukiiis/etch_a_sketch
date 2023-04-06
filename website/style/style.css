@@ -2,10 +2,15 @@ body{
     margin:0;
     padding:0;
     min-height: 100vh;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 .header{
     text-align: center;
+}
+
+.header h1{
+    font-size:60px;
 }
 
 .content{
@@ -13,7 +18,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap:20px;
+    gap:60px;
 }
 
 .personalize-grid{
@@ -21,12 +26,13 @@ body{
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    gap:10px;
+    gap:40px;
 }
 
 @media all and (max-width:829.6px){
     .personalize-grid{
         flex-direction: row;
+        gap:10px;
     }
 }
 
@@ -35,6 +41,15 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
+}
+
+.label-container{
+    gap:10px;
+}
+
+.slider{
+    width:100%;
 }
 
 .slider-container{
@@ -42,6 +57,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .personalize-button{
@@ -69,9 +85,13 @@ body{
     box-sizing: border-box;
     width: 40px;
     height: 40px;
-    border:1px solid rgb(205, 205, 205);
+    border:1px solid rgb(225, 225, 225);
 }
 
 .footer{
     text-align: center;
+    height:100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
