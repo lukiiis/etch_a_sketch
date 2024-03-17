@@ -8,4 +8,4 @@ This web app is simple sketchpad, on which you can draw whatever you want. There
 
 ## Credits
 
-Project inspired by TheOdinProject TODO
+Project inspired by TheOdinProject's course.
